@@ -1,1 +1,2 @@
 # timeLapseRecorder
+Student project
