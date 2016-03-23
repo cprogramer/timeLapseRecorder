@@ -7,7 +7,7 @@ bool recording = true;
 
 void run() {
 
-    VideoEncoder *encoder = new YUV4MPEG2(QGuiApplication::primaryScreen()->grabWindow(0).width(),
+    YUV4MPEG2 *encoder = new YUV4MPEG2(QGuiApplication::primaryScreen()->grabWindow(0).width(),
                                           QGuiApplication::primaryScreen()->grabWindow(0).height(),
                                           24,"/home/petar/test.mpg");
 
@@ -19,8 +19,8 @@ void run() {
 
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
+
     QApplication a(argc, argv);
     Widget w;
     w.show();
@@ -28,4 +28,5 @@ int main(int argc, char *argv[])
     std::thread t(run);
 
     return a.exec();
+
 }
