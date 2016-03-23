@@ -63,7 +63,7 @@ void YUV4MPEG2::addFrame(const unsigned char *pixelData, unsigned int byteCount)
 
     /* Split the job into threads */
     for(int i=0;i<nThreads;i++) {
-       threads.push_back(new std::thread(&YUV4MPEG2::tProcess,
+        threads.push_back(new std::thread(&YUV4MPEG2::tProcess,
                                     this,
                                     &pixelData[offset],
                                     offset,chunk));

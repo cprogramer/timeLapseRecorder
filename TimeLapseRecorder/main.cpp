@@ -9,12 +9,12 @@ void run() {
 
     VideoEncoder *encoder = new YUV4MPEG2(QGuiApplication::primaryScreen()->grabWindow(0).width(),
                                           QGuiApplication::primaryScreen()->grabWindow(0).height(),
-                                          2,"/home/petar/test.mpg");
+                                          24,"/home/petar/test.mpg");
 
     while(recording) {
         QImage mapa = QGuiApplication::primaryScreen()->grabWindow(0).toImage();
         encoder->addFrame(mapa.bits(),mapa.byteCount());
-        std::this_thread::sleep_for(std::chrono::milliseconds(500));
+        std::this_thread::sleep_for(std::chrono::milliseconds(200));
     }
 
 }
