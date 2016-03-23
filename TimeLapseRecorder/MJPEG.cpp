@@ -37,7 +37,7 @@ void MJPEG::addFrame(const QImage &image) {
 void MJPEG::addFrame(const unsigned char *pixelData, unsigned int byteCount) {
 
     QImage data(width,height,QImage::Format_RGB32);
-    for(int i=0;i<byteCount;i++) {
+    for(unsigned int i=0;i<byteCount;i++) {
         data.bits()[i] = pixelData[i];
     }
     addFrame(data);

@@ -8,8 +8,8 @@
 class VideoEncoder {
 public:
 
-    virtual void addFrame(const unsigned char *pixelData,unsigned int byteCount) {}
-    virtual void addFrame(const QImage& image) {}
+    virtual void addFrame(const unsigned char *pixelData,unsigned int byteCount)=0;
+    virtual void addFrame(const QImage& image)=0;
 
     ~VideoEncoder() {
         output.close();

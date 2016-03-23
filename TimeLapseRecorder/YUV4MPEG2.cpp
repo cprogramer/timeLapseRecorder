@@ -96,10 +96,14 @@ inline void YUV4MPEG2::convert(const unsigned char *input, unsigned char *output
 
     int p = width*height;
 
+    /* For speed purposes only integer arithmetic is used */
+
     /* Y = 0.299*R + 0.587*G + 0.114*B */
-    output[0]  = (unsigned char)(0.299*input[2] + 0.587*input[1] + 0.114*input[0]);
-    output[p] = (unsigned char)(128 + -0.16874*input[2] - 0.33126*input[1] + 0.5*input[0]);
-    output[2*p] = (unsigned char)(128 + 0.5*input[2] - 0.41869*input[1] - 0.08131*input[0]);
+    output[0]  = (unsigned char)((29900*input[2] + 58700*input[1] + 11400*input[0])/100000);
+    /* Cb = 128 - 0.16874*R - 0.33126*G + 0.5*B*/
+    output[p] = (unsigned char)((12800000 + -16874*input[2] - 33126*input[1] + 50000*input[0])/100000);
+    /* Cr = 128 + 0.5*R - 0.41869*G - 0.08131*B */
+    output[2*p] = (unsigned char)((12800000 + 50000*input[2] - 41869*input[1] - 8131*input[0])/100000);
 
 }
 
